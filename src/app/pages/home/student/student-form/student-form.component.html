@@ -1,0 +1,52 @@
+<div class="container">
+	<mat-card class="card">
+		<mat-card-header class="title">
+			<!-- @if (sharedProducto) {
+			<mat-card-title class="title__text">ACTUALIZAR {{ sharedProducto.name.toUpperCase() }}</mat-card-title>
+			}@else {
+			<mat-card-title class="title__text">REGISTRA UN NUEVO PRODUCTO</mat-card-title>
+			} -->
+		</mat-card-header>
+		<img
+			mat-card-image
+			src="https://www.accesoriosparacomputadores.co/blog/wp-content/uploads/2020/02/armar-un-pc-para-gamer.jpg"
+			alt="Photo of a Shiba Inu"
+		/>
+		<mat-card-content>
+			<form class="form" [formGroup]="form">
+				<mat-form-field appearance="outline">
+					<mat-label>Nombre:</mat-label>
+					<input matInput type="text" formControlName="firstName" />
+					<mat-error> {{ getErrorField(form, 'firstName') }} </mat-error>
+				</mat-form-field>
+
+				<mat-form-field appearance="outline">
+					<mat-label>Apellido:</mat-label>
+					<input matInput type="text" formControlName="lastName" />
+					<mat-error>{{ getErrorField(form, 'lastName') }}</mat-error>
+				</mat-form-field>
+
+				<mat-form-field appearance="outline">
+					<mat-label>Edad:</mat-label>
+					<input matInput type="text" formControlName="age" />
+					<mat-error>{{ getErrorField(form, 'age') }}</mat-error>
+				</mat-form-field>
+
+				<mat-form-field appearance="outline">
+					<mat-label>Email:</mat-label>
+					<input matInput type="email" formControlName="email" />
+					<mat-error>{{ getErrorField(form, 'email') }}</mat-error>
+				</mat-form-field>
+
+
+				<button  [disabled]="form.invalid" mat-raised-button color="primary" (click)="save()">
+					Registrarse
+				</button>
+				<!-- <button [hidden]="!sharedProducto" [disabled]="formGroup.invalid" mat-raised-button color="primary" (click)="updateProducto()">
+					Actualizar
+				</button> -->
+				<button mat-raised-button color="warn" (click)="goBack()">Volver</button>
+			</form>
+		</mat-card-content>
+	</mat-card>
+</div>
