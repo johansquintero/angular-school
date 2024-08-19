@@ -38,10 +38,8 @@
 					<mat-error>{{ getErrorField(form, 'email') }}</mat-error>
 				</mat-form-field>
 
-
-				<button  [disabled]="form.invalid" mat-raised-button color="primary" (click)="save()">
-					Registrarse
-				</button>
+				<button [hidden]="sharedStudent" [disabled]="form.invalid" mat-raised-button color="primary" (click)="save()">Registrarse</button>
+				<button [hidden]="!sharedStudent" [disabled]="form.invalid" mat-raised-button color="primary" (click)="update()">Actualizar</button>
 				<!-- <button [hidden]="!sharedProducto" [disabled]="formGroup.invalid" mat-raised-button color="primary" (click)="updateProducto()">
 					Actualizar
 				</button> -->
