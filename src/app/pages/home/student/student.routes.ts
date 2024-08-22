@@ -1,5 +1,5 @@
 import { Routes } from '@angular/router';
-import { sharedStudentsResolver, studentsResolver } from '../../../core/resolvers/resolvers.resolver';
+import { sharedStudentsResolver, studentsResolver } from '../../../core/resolvers/studentResolvers.resolver';
 
 export const routes: Routes = [
 	{

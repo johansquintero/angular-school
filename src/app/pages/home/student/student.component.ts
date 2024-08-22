@@ -5,13 +5,13 @@ import { MatTableModule } from '@angular/material/table';
 import { lastValueFrom } from 'rxjs';
 import { StudentResponseDto } from '../../../core/dto/student/studentResponseDto';
 import { SearchComponent } from '../../../components/search/search.component';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { MatButtonModule } from '@angular/material/button';
 
 @Component({
 	selector: 'app-studen',
 	standalone: true,
-	imports: [MatListModule, MatTableModule, SearchComponent, MatButtonModule],
+	imports: [MatListModule, MatTableModule, SearchComponent, MatButtonModule, RouterLink],
 	templateUrl: './student.component.html',
 	styleUrl: './student.component.scss'
 })

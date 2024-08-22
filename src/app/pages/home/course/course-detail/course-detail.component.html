@@ -1,0 +1,21 @@
+<div class="container">
+	<mat-card class="card">
+		@if (course) {
+		<mat-card-header class="card__title">
+			<mat-card-title>Infomracion del Estudiante</mat-card-title>
+		</mat-card-header>
+		<img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu" />
+		<mat-card-content class="card-content">
+			<mat-list role="list">
+				<mat-list-item role="listitem"><b>Nombre:</b>{{ course.name }}</mat-list-item>
+				<mat-list-item role="listitem"><b>Apellido:</b>{{ course.teacher }}</mat-list-item>
+			</mat-list>
+		</mat-card-content>
+		}
+		<mat-card-actions>
+			<button mat-raised-button>LIKE</button>
+			<button mat-raised-button>SHARE</button>
+			<button mat-raised-button color="warn" (click)="goBack()">Volver</button>
+		</mat-card-actions>
+	</mat-card>
+</div>

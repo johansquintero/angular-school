@@ -1,0 +1,36 @@
+<div class="container">
+	<mat-card class="card">
+		<mat-card-header class="title">
+			<!-- @if (sharedProducto) {
+			<mat-card-title class="title__text">ACTUALIZAR {{ sharedProducto.name.toUpperCase() }}</mat-card-title>
+			}@else {
+			<mat-card-title class="title__text">REGISTRA UN NUEVO PRODUCTO</mat-card-title>
+			} -->
+		</mat-card-header>
+		<img
+			mat-card-image
+			src="https://www.accesoriosparacomputadores.co/blog/wp-content/uploads/2020/02/armar-un-pc-para-gamer.jpg"
+			alt="Photo of a Shiba Inu"
+		/>
+		<mat-card-content>
+			<form class="form" [formGroup]="form">
+				<mat-form-field appearance="outline">
+					<mat-label>Nombre del curso:</mat-label>
+					<input matInput type="text" formControlName="name" />
+					<mat-error> {{ getErrorField(form, 'name') }} </mat-error>
+				</mat-form-field>
+
+				<mat-form-field appearance="outline">
+					<mat-label>Nombre del profesor:</mat-label>
+					<input matInput type="text" formControlName="teacher" />
+					<mat-error>{{ getErrorField(form, 'teacher') }}</mat-error>
+				</mat-form-field>
+
+				<button [hidden]="sharedCourse" [disabled]="form.invalid" mat-raised-button color="primary" (click)="save()">Registrar</button>
+				<button [hidden]="!sharedCourse" [disabled]="form.invalid" mat-raised-button color="primary" (click)="update()">Actualizar</button>
+
+				<button mat-raised-button color="warn" (click)="goBack()">Volver</button>
+			</form>
+		</mat-card-content>
+	</mat-card>
+</div>

@@ -55,8 +55,9 @@ export class StudentFormComponent extends AppBaseComponent implements OnInit, On
 	}
 
 	public async update(): Promise<void> {
-		if (this.form.valid) {
+		if (this.form.valid && this.sharedStudent) {
 			let newStudent: StudentRequestDto = this.form.value;
+			newStudent.id = this.sharedStudent.id;
 			await lastValueFrom(this.studentService.update(newStudent)).then((response) => {
 				alert(`Student with name ${response.firstName} has been updated successfully\n`);
 				this.router.navigate(['/student']);
