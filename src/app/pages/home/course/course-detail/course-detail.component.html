@@ -1,14 +1,20 @@
 <div class="container">
 	<mat-card class="card">
-		@if (course) {
+		@if (courseStudents) {
 		<mat-card-header class="card__title">
-			<mat-card-title>Infomracion del Estudiante</mat-card-title>
+			<mat-card-title>Informacion del curso</mat-card-title>
 		</mat-card-header>
 		<img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu" />
 		<mat-card-content class="card-content">
 			<mat-list role="list">
-				<mat-list-item role="listitem"><b>Nombre:</b>{{ course.name }}</mat-list-item>
-				<mat-list-item role="listitem"><b>Apellido:</b>{{ course.teacher }}</mat-list-item>
+				<mat-list-item role="listitem"><b>Nombre del curos:</b>{{ courseStudents.name }}</mat-list-item>
+				<mat-list-item role="listitem"><b>Nombre del profesor:</b>{{ courseStudents.teacher }}</mat-list-item>
+			</mat-list>
+			<hr />
+			<mat-list role="list">
+				@for (student of courseStudents.students; track student.id) {
+				<mat-list-item role="listitem">{{ student.firstName }} {{ student.lastName }}</mat-list-item>
+				}
 			</mat-list>
 		</mat-card-content>
 		}

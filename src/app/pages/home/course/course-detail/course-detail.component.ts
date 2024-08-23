@@ -1,12 +1,11 @@
-import { StudentResponseDto } from './../../../../core/dto/student/studentResponseDto';
 import { ActivatedRoute, Params } from '@angular/router';
 import { Component, inject, OnInit } from '@angular/core';
 import { MatCardModule } from '@angular/material/card';
 import { MatListModule } from '@angular/material/list';
-import { CourseDto } from '../../../../core/dto/course/courseDto';
 import { lastValueFrom } from 'rxjs';
 import { CourseService } from '../../../../core/services/course.service';
 import { MatButtonModule } from '@angular/material/button';
+import { StudentByCourseResponse } from '../../../../core/dto/student/studentByCourseResponse';
 
 @Component({
 	selector: 'app-course-detail',
@@ -19,25 +18,20 @@ export class CourseDetailComponent implements OnInit {
 	private readonly activatedRoute: ActivatedRoute = inject(ActivatedRoute);
 	private readonly courseService: CourseService = inject(CourseService);
 
-	public students: StudentResponseDto[];
-	public course: CourseDto;
+	public courseStudents: StudentByCourseResponse;
 	ngOnInit(): void {
 		this.getCourse();
-		console.log(this.course);
 	}
-	public async getCourse(): Promise<void> {
-		let id: number;
+	public getCourse(): void {
 		this.activatedRoute.queryParams.subscribe((param: Params) => {
-			id = param['id'];
+			const id = param['id'];
+			if (id) {
+				this.courseService.getStudentsByCourseId(id).subscribe((response) => {
+					this.courseStudents = response as StudentByCourseResponse;
+					console.log(this.courseStudents);
+				});
+			}
 		});
-		if (id) {
-			await lastValueFrom(this.courseService.getCourseById(id)).then((response) => {
-				this.course = response;
-			});
-			await lastValueFrom(this.courseService.getStudentsByCourseId(id)).then((response) => {
-				this.students = response;
-			});
-		}
 	}
 
 	goBack() {

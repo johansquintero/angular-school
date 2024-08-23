@@ -4,6 +4,7 @@ import { environment } from '../../../environments/environment';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { CourseDto } from '../dto/course/courseDto';
+import { StudentByCourseResponse } from '../dto/student/studentByCourseResponse';
 
 const API_URL = `${environment.api_url}/course`;
 @Injectable({
@@ -34,8 +35,8 @@ export class CourseService {
 		return this.http.get<CourseDto>(`${API_URL}/search-by-id/${id}`);
 	}
 
-	public getStudentsByCourseId(id: number): Observable<StudentResponseDto[]> {
-		return this.http.get<StudentResponseDto[]>(`${API_URL}/search-students/${id}`);
+	public getStudentsByCourseId(id: number): Observable<StudentByCourseResponse> {
+		return this.http.get<StudentByCourseResponse>(`${API_URL}/search-students/${id}`);
 	}
 
 	public setSharedCourse(course: CourseDto) {
