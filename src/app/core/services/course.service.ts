@@ -39,6 +39,10 @@ export class CourseService {
 		return this.http.get<StudentByCourseResponse>(`${API_URL}/search-students/${id}`);
 	}
 
+	public getCoursesByValues(value: string): Observable<CourseDto[]> {
+		return this.http.get<CourseDto[]>(`${API_URL}/search-by-values/${value}`);
+	}
+
 	public setSharedCourse(course: CourseDto) {
 		this.sharedCourse = course;
 	}

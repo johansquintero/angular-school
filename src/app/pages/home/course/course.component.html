@@ -1,4 +1,5 @@
 <div class="mat-elevation-z8 table">
+	<app-search (seach-value)="search($event)"></app-search>
 	@if (courses) {
 	<table mat-table [dataSource]="courses">
 		<ng-container matColumnDef="id">
