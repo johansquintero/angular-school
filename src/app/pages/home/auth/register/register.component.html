@@ -1,0 +1,51 @@
+<div class="container">
+  <mat-card class="card">
+    <mat-card-header class="card__title">
+      <mat-card-title>Registro</mat-card-title>
+    </mat-card-header>
+
+    <mat-card-content>
+      <form class="form" [formGroup]="formGroup">
+        <mat-form-field appearance="outline">
+          <mat-label>Nombre de usuario:</mat-label>
+          <input matInput type="text" formControlName="username" />
+          <mat-error> {{ getErrorField(formGroup, "username") }} </mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+          <mat-label>Contraseña</mat-label>
+          <input matInput type="password" formControlName="password" />
+          <mat-error>
+            {{ getErrorField(formGroup, "password") }}
+          </mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+          <mat-label>Repetir contraseña</mat-label>
+          <input
+            matInput
+            type="password"
+            formControlName="repeatPassword"
+            [errorStateMatcher]="passwordStateMatcher"
+          />
+          <mat-error>
+            @if(formGroup.hasError('mismatch')){ Las contraseñas no coinciden
+            }@else{
+            {{ getErrorField(formGroup, "repeatPassword") }}
+            }
+          </mat-error>
+        </mat-form-field>
+
+        <button mat-raised-button color="primary" (click)="register()">
+          Registrarse
+        </button>
+        <a
+          mat-raised-button
+          color="warn"
+          [routerLink]="['/']"
+          >Volver a login</a
+        >
+      </form>
+    </mat-card-content>
+  </mat-card>
+</div>

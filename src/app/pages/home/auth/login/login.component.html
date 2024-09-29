@@ -1,0 +1,26 @@
+<div class="container">
+	<mat-card class="card">
+		<mat-card-header class="card__title">
+			<mat-card-title>Inicio de Sesión</mat-card-title>
+		</mat-card-header>
+		<mat-card-content class="card-content" [formGroup]="logForm">
+			<img mat-card-image src="https://th.bing.com/th/id/R.7e1a9c1cf56bed7862b3d50358c71c4c?rik=iJXE332kRAum%2bw&pid=ImgRaw&r=0" alt="Photo of a Shiba Inu" />
+			<mat-form-field appearance="outline">
+				<mat-label>Usuario</mat-label>
+				<input formControlName="username" matInput placeholder="Ingrese su usuario" />
+				<mat-icon matSuffix>account_circle</mat-icon>
+			</mat-form-field>
+
+			<mat-form-field appearance="outline">
+				<mat-label>Contraseña</mat-label>
+				<input formControlName="password" matInput type="password" placeholder="Ingrese su Contraseña" />
+				<mat-icon matSuffix>lock</mat-icon>
+			</mat-form-field>
+			<button mat-raised-button color="primary" (click)="logIn()">Iniciar sesión</button>
+			<p>
+				¿No tienes un cuenta?
+				<a class="text-black-50 fw-bold" [routerLink]="['/authentication/register']">Crear cuenta</a>
+			</p>
+		</mat-card-content>
+	</mat-card>
+</div>
