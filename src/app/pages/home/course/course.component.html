@@ -35,6 +35,6 @@
 		<tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
 	</table>
 	}
-	<a routerLink="/course/form" mat-flat-button color="primary">Registrar un nuevo curso</a>
+	<a [hidden]="!finAuthority('CREATE')" routerLink="/course/form" mat-flat-button color="primary">Registrar un nuevo curso</a>
 	<a routerLink="/" mat-flat-button color="warn">Volver a menu principal</a>
 </div>

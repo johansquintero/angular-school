@@ -43,4 +43,9 @@ export class TokenService {
 	public getInfoToken(): AuthClaimsDto {
 		return <AuthClaimsDto>jwtDecode.jwtDecode(this.getToken());
 	}
+
+	public getAuthorities():string[]{
+		return this.getInfoToken().authorities.split(',');
+	}
+
 }

@@ -1,5 +1,6 @@
 import { Routes } from '@angular/router';
 import { sharedStudentsResolver, studentsResolver } from '../../../core/resolvers/studentResolvers.resolver';
+import { createAndUpdatePersmissionGuard } from '../../../core/guards/persmission.guard';
 
 export const routes: Routes = [
 	{
@@ -14,9 +15,10 @@ export const routes: Routes = [
 		title: 'Create student',
 		loadComponent: () => import('./student-form/student-form.component').then((c) => c.StudentFormComponent),
 		pathMatch: 'full',
-		resolve:{
-			sharedStudent:sharedStudentsResolver
-		}
+		resolve: {
+			sharedStudent: sharedStudentsResolver
+		},
+		canActivate: [createAndUpdatePersmissionGuard]
 	},
 	{
 		path: 'detail',

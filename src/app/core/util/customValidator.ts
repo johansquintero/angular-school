@@ -67,3 +67,24 @@ export class CustomValidators extends Validators {
 		};
 	}
 }
+
+//validaciones cruzadas dada por una funcion
+export const crossPasswordValidator: ValidatorFn = (
+	formGroupControl: AbstractControl<{
+		password: string;
+		repeatPassword: string;
+	}>
+): ValidationErrors | null => {
+	const sourceControl = formGroupControl.value.password;
+	const targetControl = formGroupControl.value.repeatPassword;
+	return sourceControl !== targetControl ? { mismatch: true } : null;
+};
+
+export class PasswordStateMatcher implements ErrorStateMatcher {
+	isErrorState(control: AbstractControl, form: FormGroupDirective | NgForm): boolean {
+		if (!control || !control.parent) {
+			return false;
+		}
+		return control.parent.hasError('mismatch');
+	}
+}
